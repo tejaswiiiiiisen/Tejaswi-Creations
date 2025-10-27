@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Tejaswi Sen — Developer Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=OnePlus+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --oneplus-red: #eb0028;
+      --oneplus-dark: #000000;
+      --oneplus-gray: #1a1a1a;
+      --oneplus-light-gray: #2a2a2a;
+      --oneplus-text: #ffffff;
+      --oneplus-text-secondary: #999999;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--oneplus-dark);
+      color: var(--oneplus-text);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* Navbar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      padding: 20px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.3s ease;
+    }
+
+    .navbar.scrolled {
+      padding: 15px 50px;
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: -1px;
+    }
+
+    .logo-red {
+      color: var(--oneplus-red);
+    }
+
+    .logo-white {
+      color: #fff;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--oneplus-text);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.3s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--oneplus-red);
+      transition: width 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--oneplus-red);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 50px 80px;
+      background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 50% 50%, rgba(235, 0, 40, 0.1) 0%, transparent 70%);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1000px;
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+      color: var(--oneplus-red);
+      font-weight: 600;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      animation: fadeInUp 0.6s ease-out;
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 800;
+      margin-bottom: 30px;
+      line-height: 1.1;
+      animation: fadeInUp 0.8s ease-out;
+      transition: all 0.4s ease;
+      cursor: default;
+    }
+
+    .hero h1:hover {
+      color: var(--oneplus-red);
+      transform: scale(1.05);
+      text-shadow: 0 10px 40px rgba(235, 0, 40, 0.5);
+    }
+
+    .hero-tagline {
+      font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+      color: var(--oneplus-text-secondary);
+      margin-bottom: 50px;
+      font-weight: 400;
+      animation: fadeInUp 1s ease-out;
+      transition: all 0.3s ease;
+    }
+
+    .hero-tagline:hover {
+      color: #fff;
+      transform: translateY(-5px);
+      text-shadow: 0 5px 20px rgba(235, 0, 40, 0.3);
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeInUp 1.2s ease-out;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      padding: 16px 40px;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      font-size: 1rem;
+      position: relative;
+      overflow: hidden;
+      border: 2px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--oneplus-red);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: #d40024;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(235, 0, 40, 0.4);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.4);
+      transform: translateY(-3px);
+    }
+
+    /* Projects Section */
+    .section {
+      padding: 120px 50px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 80px;
+    }
+
+    .section-label {
+      font-size: 0.9rem;
+      color: var(--oneplus-red);
+      font-weight: 600;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .section-title {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+
+    .section-description {
+      font-size: 1.2rem;
+      color: var(--oneplus-text-secondary);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 40px;
+    }
+
+    .project-card {
+      background: var(--oneplus-gray);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--oneplus-red);
+      transform: scaleX(0);
+      transition: transform 0.5s;
+    }
+
+    .project-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .project-card:hover {
+      transform: translateY(-15px);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+      border-color: rgba(235, 0, 40, 0.3);
+    }
+
+    .project-image {
+      width: 100%;
+      height: 250px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--oneplus-red) 0%, #b8001f 100%);
+      transition: all 0.4s ease;
+    }
+
+    .project-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.2);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
+    .project-card:hover .project-image {
+      transform: scale(1.1);
+    }
+
+    .project-card:hover .project-image::after {
+      opacity: 1;
+    }
+
+    .oneplus-gradient {
+      background: linear-gradient(135deg, #eb0028 0%, #8b0017 100%);
+    }
+
+    .netflix-gradient {
+      background: linear-gradient(135deg, #e50914 0%, #831010 100%);
+    }
+
+    .portfolio-gradient {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    .project-content {
+      padding: 35px;
+    }
+
+    .project-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: #fff;
+    }
+
+    .project-description {
+      color: var(--oneplus-text-secondary);
+      line-height: 1.8;
+      margin-bottom: 25px;
+      font-size: 1rem;
+    }
+
+    .project-features {
+      list-style: none;
+      margin-bottom: 25px;
+    }
+
+    .project-features li {
+      padding: 10px 0;
+      color: #ccc;
+      font-size: 0.95rem;
+      position: relative;
+      padding-left: 30px;
+    }
+
+    .project-features li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--oneplus-red);
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 25px;
+    }
+
+    .tech-tag {
+      padding: 8px 16px;
+      background: rgba(235, 0, 40, 0.1);
+      border: 1px solid rgba(235, 0, 40, 0.3);
+      border-radius: 20px;
+      font-size: 0.85rem;
+      color: #ff6b6b;
+      font-weight: 600;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 15px;
+    }
+
+    .project-btn {
+      padding: 12px 24px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.3s;
+      flex: 1;
+      text-align: center;
+    }
+
+    .btn-view {
+      background: var(--oneplus-red);
+      color: #fff;
+    }
+
+    .btn-view:hover {
+      background: #d40024;
+      transform: scale(1.05);
+    }
+
+    .btn-code {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #fff;
+    }
+
+    .btn-code:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Skills Section */
+    .skills-section {
+      background: var(--oneplus-gray);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 30px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .skill-card {
+      background: var(--oneplus-light-gray);
+      padding: 30px 20px;
+      border-radius: 15px;
+      text-align: center;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .skill-card::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: radial-gradient(circle, rgba(235, 0, 40, 0.2) 0%, transparent 70%);
+      transform: translate(-50%, -50%);
+      transition: all 0.6s ease;
+      border-radius: 50%;
+    }
+
+    .skill-card:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-15px) scale(1.05);
+      border-color: var(--oneplus-red);
+      box-shadow: 0 20px 50px rgba(235, 0, 40, 0.3);
+    }
+
+    .skill-icon {
+      font-size: 3rem;
+      margin-bottom: 15px;
+      transition: all 0.4s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    .skill-card:hover .skill-icon {
+      transform: rotateY(360deg) scale(1.2);
+    }
+
+    .skill-name {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #fff;
+      position: relative;
+      z-index: 1;
+      transition: all 0.3s ease;
+    }
+
+    .skill-card:hover .skill-name {
+      color: var(--oneplus-red);
+      transform: scale(1.1);
+    }
+
+    /* Contact Section */
+    .contact-section {
+      background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+    }
+
+    .contact-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: var(--oneplus-gray);
+      padding: 60px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .form-group label {
+      font-weight: 600;
+      color: #fff;
+      font-size: 0.95rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      padding: 15px 20px;
+      background: var(--oneplus-light-gray);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      color: #fff;
+      font-size: 1rem;
+      font-family: inherit;
+      transition: all 0.3s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--oneplus-red);
+      box-shadow: 0 0 0 3px rgba(235, 0, 40, 0.1);
+    }
+
+    .form-group textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .submit-btn {
+      padding: 18px 40px;
+      background: var(--oneplus-red);
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .submit-btn:hover {
+      background: #d40024;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(235, 0, 40, 0.4);
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--oneplus-dark);
+      padding: 60px 50px 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .footer-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 50px;
+      margin-bottom: 40px;
+    }
+
+    .footer-section h3 {
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      color: var(--oneplus-red);
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-links a {
+      color: var(--oneplus-text-secondary);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover {
+      color: var(--oneplus-red);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .social-links a {
+      width: 45px;
+      height: 45px;
+      background: var(--oneplus-light-gray);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      font-size: 1.2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .social-links a::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--oneplus-red);
+      border-radius: 50%;
+      transform: scale(0);
+      transition: transform 0.4s ease;
+    }
+
+    .social-links a:hover::before {
+      transform: scale(1);
+    }
+
+    .social-links a:hover {
+      transform: translateY(-5px) rotate(360deg);
+      box-shadow: 0 10px 25px rgba(235, 0, 40, 0.4);
+    }
+
+    .social-links a span {
+      position: relative;
+      z-index: 1;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      color: var(--oneplus-text-secondary);
+      font-size: 0.9rem;
+    }
+
+    /* Mobile Menu */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      width: 30px;
+      height: 3px;
+      background: #fff;
+      border-radius: 3px;
+      transition: all 0.3s;
+    }
+
+    /* Responsive */
+    @media (max-width: 968px) {
+      .navbar {
+        padding: 15px 30px;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.98);
+        flex-direction: column;
+        padding: 30px;
+        gap: 20px;
+        transform: translateY(-100%);
+        opacity: 0;
+        transition: all 0.3s;
+      }
+
+      .nav-links.active {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      .hero {
+        padding: 100px 30px 60px;
+      }
+
+      .section {
+        padding: 80px 30px;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 20px;
+      }
+
+      .contact-container {
+        padding: 40px 30px;
+      }
+
+      .footer {
+        padding: 40px 30px 20px;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-cta {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .project-links {
+        flex-direction: column;
+      }
+    }
+
+    /* Scroll Progress Bar */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: var(--oneplus-red);
+      z-index: 10000;
+      transform-origin: left;
+      transition: transform 0.1s;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <nav class="navbar" id="navbar">
+    <a href="#" class="logo"><span class="logo-red">Tejaswi</span> <span class="logo-white">Sen</span></a>
+    <div class="menu-toggle" id="menuToggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="hero-subtitle">Developer & Creative Technologist</div>
+      <h1>Never Settle</h1>
+      <p class="hero-tagline">Hi, I'm Tejaswi Sen — a passionate web developer specializing in building modern, responsive websites and applications. I work with HTML, CSS, JavaScript, Java, C++, and more. I love turning ideas into clean, functional code and creating seamless user experiences.</p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn btn-primary">View Projects</a>
+        <a href="https://github.com/tejaswiiiiiisen" target="_blank" class="btn btn-secondary">GitHub Profile</a>
+        <a href="https://www.instagram.com/tejaswiiiiiisen" target="_blank" class="btn btn-secondary">Instagram</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="projects">
+    <div class="section-header">
+      <div class="section-label">Portfolio</div>
+      <h2 class="section-title">Featured Projects</h2>
+      <p class="section-description">A showcase of modern web development projects built with cutting-edge technologies</p>
+    </div>
+
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-image oneplus-gradient">
+          📱
+        </div>
+        <div class="project-content">
+          <h3 class="project-title">OnePlus Website Clone</h3>
+          <p class="project-description">
+            A fully responsive front-end clone of the OnePlus India website with smooth UI/UX transitions and device showcase sections inspired by the official site.
+          </p>
+          <ul class="project-features">
+            <li>Modern product grid layout</li>
+            <li>Navbar, hero banners & footer with links</li>
+            <li>Smooth scroll, transitions, and hover effects</li>
+          </ul>
+          <div class="tech-stack">
+            <span class="tech-tag">HTML5</span>
+            <span class="tech-tag">CSS3</span>
+            <span class="tech-tag">JavaScript</span>
+            <span class="tech-tag">GSAP</span>
+            <span class="tech-tag">Flexbox/Grid</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="project-btn btn-view">Live Demo</a>
+            <a href="https://github.com/tejaswiiiiiisen" target="_blank" class="project-btn btn-code">View Code</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-image netflix-gradient">
+          🎬
+        </div>
+        <div class="project-content">
+          <h3 class="project-title">Netflix Website Clone</h3>
+          <p class="project-description">
+            A sleek front-end replica of the Netflix homepage featuring responsive layouts, media thumbnails, hover effects, and subscription call-to-action elements.
+          </p>
+          <ul class="project-features">
+            <li>Dark-themed design with Netflix-style UI</li>
+            <li>Hover previews on movie cards</li>
+            <li>Responsive layout for all screen sizes</li>
+          </ul>
+          <div class="tech-stack">
+            <span class="tech-tag">HTML5</span>
+            <span class="tech-tag">CSS3</span>
+            <span class="tech-tag">JavaScript</span>
+            <span class="tech-tag">Flexbox</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="project-btn btn-view">Live Demo</a>
+            <a href="https://github.com/tejaswiiiiiisen" target="_blank" class="project-btn btn-code">View Code</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-image portfolio-gradient">
+          💼
+        </div>
+        <div class="project-content">
+          <h3 class="project-title">Malik Brothers</h3>
+          <p class="project-description">
+            A modern, responsive portfolio highlighting projects with smooth animations, gradient visuals, and an intuitive user experience.
+          </p>
+          <ul class="project-features">
+            <li>Hero section with image overlay</li>
+            <li>Animated project cards with hover effects</li>
+            <li>Mobile-first responsive design</li>
+          </ul>
+          <div class="tech-stack">
+            <span class="tech-tag">HTML5</span>
+            <span class="tech-tag">CSS3</span>
+            <span class="tech-tag">JavaScript</span>
+            <span class="tech-tag">Animations</span>
+          </div>
+          <div class="project-links">
+            <a href="https://tejaswiiiiiisen.github.io/Malik-brothers/" target="_blank" class="project-btn btn-view">Live Demo</a>
+            <a href="https://tejaswiiiiiisen.github.io/Malik-brothers/" target="_blank" class="project-btn btn-code">View Code</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section skills-section" id="skills">
+    <div class="section-header">
+      <div class="section-label">Expertise</div>
+      <h2 class="section-title">Tech Stack & Skills</h2>
+      <p class="section-description">Technologies and tools I work with to bring ideas to life</p>
+    </div>
+
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-icon">🌐</div>
+        <div class="skill-name">HTML5</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🎨</div>
+        <div class="skill-name">CSS3</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">⚡</div>
+        <div class="skill-name">JavaScript</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">💻</div>
+        <div class="skill-name">C++</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">☕</div>
+        <div class="skill-name">Java</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">📦</div>
+        <div class="skill-name">GitHub</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🚀</div>
+        <div class="skill-name">Bootstrap</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">⚙️</div>
+        <div class="skill-name">C</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section contact-section" id="contact">
+    <div class="section-header">
+      <div class="section-label">Get In Touch</div>
+      <h2 class="section-title">Send me a message!</h2>
+      <p class="section-description">Got a question or proposal, or just want to say hello? Go ahead.</p>
+    </div>
+
+    <div class="contact-container">
+      <form class="contact-form" id="contactForm">
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" name="name" required placeholder="Enter your name">
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+        </div>
+        <div class="form-group">
+          <label for="message">Your Message</label>
+          <textarea id="message" name="message" required placeholder="Type your message here..."></textarea>
+        </div>
+        <button type="submit" class="submit-btn">SHOOT →</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Tejaswi Sen</h3>
+        <p style="color: var(--oneplus-text-secondary); line-height: 1.8;">
+          Full-stack web developer with expertise in frontend technologies and programming languages including Java, C++, and JavaScript. Focused on crafting elegant solutions to complex problems and delivering exceptional user experiences.
+        </p>
+        <div class="social-links">
+          <a href="https://github.com/tejaswiiiiiisen" target="_blank" title="GitHub"><span>📦</span></a>
+          <a href="https://www.linkedin.com/in/tejaswi-sen/" target="_blank" title="LinkedIn"><span>💼</span></a>
+          <a href="https://www.instagram.com/tejaswiiiiiisen" target="_blank" title="Instagram"><span>📷</span></a>
+        </div>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Projects</h3>
+        <ul class="footer-links">
+          <li><a href="#">OnePlus Website Clone</a></li>
+          <li><a href="#">Malik Brothers</a></li>
+          <li><a href="#">Netflix Website Clone</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Contact Info</h3>
+        <ul class="footer-links">
+          <li style="color: var(--oneplus-text-secondary);">📞 +91 8209925051</li>
+          <li><a href="mailto:contact@tejaswisen.dev">Email Me</a></li>
+          <li><a href="https://www.instagram.com/tejaswiiiiiisen" target="_blank">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 Tejaswi Sen. All rights reserved. | Never Settle</p>
+    </div>
+  </footer>
+
+  <script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // Scroll progress bar
+    window.addEventListener('scroll', () => {
+      const scrollProgress = document.getElementById('scrollProgress');
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrolled = (window.scrollY / scrollHeight) * 100;
+      scrollProgress.style.transform = `scaleX(${scrolled / 100})`;
+    });
+
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    // Close mobile menu when link is clicked
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+      });
+    });
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Contact form - WhatsApp integration
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+      
+      // Format message for WhatsApp
+      const whatsappMessage = `Hello! My name is ${name}%0A%0AEmail: ${email}%0A%0AMessage: ${message}`;
+      
+      // WhatsApp number (replace with your number)
+      const phoneNumber = '918209925051'; // Your number in international format without + or spaces
+      
+      // Open WhatsApp
+      window.open(`https://wa.me/${phoneNumber}?text=${whatsappMessage}`, '_blank');
+      
+      // Reset form
+      this.reset();
+    });
+
+    // Project cards animation on scroll
+    const projectCards = document.querySelectorAll('.project-card');
+    const skillCards = document.querySelectorAll('.skill-card');
+
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '0';
+          entry.target.style.transform = 'translateY(30px)';
+          setTimeout(() => {
+            entry.target.style.transition = 'all 0.6s ease-out';
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }, 100);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    projectCards.forEach(card => observer.observe(card));
+    skillCards.forEach(card => observer.observe(card));
+  </script>
+
+</body>
+</html>
